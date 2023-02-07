@@ -61,6 +61,14 @@ Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella. -->
 </head>
 
 <body>
-
+    <div class="container p-5">
+        <?php foreach($hotels as $hotel) : ?>
+            <p>
+                <?php foreach($hotel as $key => $value) : ?>
+                <b><?= $key ?></b>: <?= $value ?>  
+                <?php endforeach; ?>
+            </p>
+        <?php endforeach; ?>
+    </div>
 </body>
 </html>
