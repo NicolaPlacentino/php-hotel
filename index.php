@@ -62,13 +62,36 @@ Dopo aggiungete Bootstrap e mostrate le informazioni con una tabella. -->
 
 <body>
     <div class="container p-5">
-        <?php foreach($hotels as $hotel) : ?>
-            <p>
-                <?php foreach($hotel as $key => $value) : ?>
-                <b><?= $key ?></b>: <?= $value ?>  
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <?php foreach($hotels[1] as $key => $value) : ?>
+                    <th scope="col"><?= str_replace('_', ' ' ,ucfirst($key)) ?></th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($hotels as $hotel) : ?>
+                    <tr>
+                        <?php foreach($hotel as $key => $value) : ?>
+                        <th scope="col" class="fw-normal">
+                            <?php 
+                                if($key === 'parking'){
+                                    if($value){
+                                        echo '<i class="fa-solid fa-circle-check text-success"></i>';
+                                    } else {
+                                        echo '<i class="fa-solid fa-circle-xmark text-danger"></i>';
+                                    }
+                                } else {
+                                    echo $value;
+                                }
+                            ?>
+                        </th>
+                        <?php endforeach; ?>
+                    </tr>
                 <?php endforeach; ?>
-            </p>
-        <?php endforeach; ?>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>
